@@ -1,0 +1,66 @@
+﻿@model _04_Business.Models.HatırlatıcıModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h2>Bu hatırlatmayı silmek istediğinize emin misiniz?</h2>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.To)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            <button type="button" class="btn btn-info">@Html.ActionLink("Geri Dön", "Sergi", new { id = Model.MachineId })</button>
+        </div>
+    }
+</div>

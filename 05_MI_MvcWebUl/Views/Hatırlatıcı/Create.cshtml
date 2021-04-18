@@ -1,0 +1,105 @@
+﻿@model _04_Business.Models.HatırlatıcıModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<br />
+
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/ui-darkness/jquery-ui.css" rel="stylesheet" />
+
+<div>
+    @ViewBag.Message
+</div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name,"Konu Başlığı:" ,htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details,"Detay:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Details,5,50, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateTime,"Tarih:" ,htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control",@text = "Bir Tarih Seçiniz" } })
+            @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.From,"Gönderen Mail:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.From, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+            @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.To,"Alıcı Mail:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.To, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GmailPassword,"Gönderen Mail Şifresi:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.GmailPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GmailPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.HiddenFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Oluştur" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+
+<div>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Geri Dön", "Index", "Machines")</button>
+   
+</div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#DateTime").datepicker({
+                    dateFormat: "dd-mm-yy",
+                    monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                    dayNamesMin: ["Pzr","Pzt","Sl","Çrb","Prş","Cm","Cmrt"]
+                 
+                });
+            });
+        </script>
+    }

@@ -1,0 +1,25 @@
+﻿@model _04_Business.Models.FactoryModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h4>Fabrika Detayı</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-danger">  @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Geri Dön", "Index")</button>
+</p>

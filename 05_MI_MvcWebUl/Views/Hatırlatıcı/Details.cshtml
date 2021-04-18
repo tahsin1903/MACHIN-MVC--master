@@ -1,0 +1,53 @@
+﻿@model _04_Business.Models.HatırlatıcıModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.To)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-danger"> @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id })</button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Geri Dön", "Sergi", new { id = Model.MachineId })</button>
+    
+</p>

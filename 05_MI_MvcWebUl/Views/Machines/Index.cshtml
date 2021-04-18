@@ -1,0 +1,73 @@
+﻿@model IEnumerable<_04_Business.Models.MachineModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<p>
+    <button type="button" class="btn btn-success">@Html.ActionLink("Yeni Bölüm Oluştur", "Create")</button>
+</p>
+
+<table class="table table-bordered " id="myTable" style="background-color: #120017; background-image: url( https://www.transparenttextures.com/patterns/diagmonds-light.png); ">
+    <thead style="color: #ffd800">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeriNO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detail)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.SectionName)
+            </th>
+            <th>Makineler ile İlgili İşlemler</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody style="color:#ffffff;text-align:center;">
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeriNO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detail)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.SectionName)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning">@Html.ActionLink("Tüm Hatırlamaları Göster", "Sergi", "Hatırlatıcı", new { id = item.Id }, "")</button><hr />
+
+                    <button type="button" class="btn btn-warning"> @Html.ActionLink("Yeni Hatırlatıcı Oluştur", "Create", "Hatırlatıcı", new { id = item.Id }, "")</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Düzenle", "Edit", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Detay", "Details", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Sil", "Delete", new { id = item.Id })</button>
+                </td>
+
+            </tr>
+        </tbody>
+    }
+
+</table>
+
